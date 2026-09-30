@@ -168,10 +168,85 @@ dialog textarea{min-height:90px;resize:vertical}
 }
 @media (prefers-reduced-motion:reduce){*{scroll-behavior:auto!important}}
 html{scroll-behavior:smooth}
+
+/* ===== Nổi bật & hiệu ứng ===== */
+.masthead{position:relative;overflow:hidden;padding-block:48px 34px;background:linear-gradient(120deg,#0b1a40 0%,#12295c 45%,#1f4291 100%);background-size:200% 200%;animation:bgshift 16s ease-in-out infinite alternate}
+.masthead::before{content:"";position:absolute;inset:0;background:radial-gradient(circle at 88% 15%,rgba(200,16,46,.38),transparent 42%),radial-gradient(circle at 8% 115%,rgba(255,255,255,.13),transparent 45%);pointer-events:none}
+.masthead::after{content:"";position:absolute;right:-70px;top:-70px;width:280px;height:280px;border-radius:50%;border:44px solid rgba(255,255,255,.06);animation:float 9s ease-in-out infinite;pointer-events:none}
+.masthead .wrap{position:relative;z-index:1}
+.masthead h1{font-size:clamp(32px,6vw,54px)}
+.masthead h1 em{box-shadow:none;background:linear-gradient(transparent 68%,var(--red) 68%,var(--red) 90%,transparent 90%) no-repeat;background-size:0% 100%;animation:underline 1s .6s cubic-bezier(.2,.7,.2,1) forwards}
+@keyframes underline{to{background-size:100% 100%}}
+@keyframes bgshift{from{background-position:0% 50%}to{background-position:100% 50%}}
+@keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(20px)}}
+@keyframes rise{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:none}}
+@keyframes pulse{0%{box-shadow:0 0 0 0 rgba(255,77,99,.65)}70%{box-shadow:0 0 0 10px rgba(255,77,99,0)}100%{box-shadow:0 0 0 0 rgba(255,77,99,0)}}
+.hero-in>*{animation:rise .7s cubic-bezier(.2,.7,.2,1) both}
+.hero-in>*:nth-child(2){animation-delay:.08s}.hero-in>*:nth-child(3){animation-delay:.16s}.hero-in>*:nth-child(4){animation-delay:.26s}.hero-in>*:nth-child(5){animation-delay:.36s}
+.stats{gap:10px;margin-top:24px}
+.stats span{background:rgba(255,255,255,.09);border:1px solid rgba(255,255,255,.18);border-radius:12px;padding:10px 16px;min-width:120px;transition:transform .2s,background .2s}
+.stats span:hover{transform:translateY(-3px);background:rgba(255,255,255,.16)}
+.stats b{display:block;font-size:26px;line-height:1.1;margin:0 0 2px}
+.next-ev{margin-top:16px;display:flex;align-items:center;gap:10px 14px;flex-wrap:wrap;text-decoration:none;color:#fff;background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.2);border-left:4px solid var(--red);border-radius:12px;padding:12px 16px;max-width:680px;transition:background .2s,transform .2s}
+.next-ev:hover{background:rgba(255,255,255,.17);transform:translateX(4px)}
+.next-ev .lbl{display:inline-flex;align-items:center;gap:8px;font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:#ffb3bd}
+.live-dot{width:9px;height:9px;border-radius:50%;background:#ff4d63;animation:pulse 1.8s infinite}
+.next-ev .tt{font-weight:600;font-size:16px;flex:1 1 220px;min-width:0}
+.next-ev .cd{font-size:13px;font-weight:700;background:var(--red);color:#fff;border-radius:999px;padding:3px 10px;white-space:nowrap}
+
+nav.tabs a{transition:background .2s,color .2s}
+nav.tabs a.active{background:var(--red);color:#fff}
+
+.sec-head h2{font-size:30px}
+.sec-head h2::after{content:"";display:block;height:3px;width:0;background:var(--red);margin-top:6px;border-radius:2px;transition:width .8s .2s cubic-bezier(.2,.7,.2,1)}
+section.in .sec-head h2::after{width:56px}
+
+.reveal{opacity:0;transform:translateY(26px);transition:opacity .7s ease,transform .7s cubic-bezier(.2,.7,.2,1)}
+.reveal.in{opacity:1;transform:none}
+.stagger>*{animation:rise .5s cubic-bezier(.2,.7,.2,1) both;animation-delay:calc(var(--i,0) * 70ms)}
+
+.person,.act,.lgroup,.day-panel .item,.contact{transition:transform .25s,box-shadow .25s,border-color .25s}
+.person:hover,.act:hover,.lgroup:hover,.day-panel .item:hover{transform:translateY(-4px);box-shadow:0 14px 28px -16px rgba(18,41,92,.45);border-color:color-mix(in srgb,var(--accent) 45%,var(--line))}
+.person{border-top:3px solid var(--red)}
+.avatar{background:linear-gradient(135deg,var(--navy),var(--red));color:#fff;width:50px;height:50px;font-size:19px;transition:transform .3s}
+.person:hover .avatar{transform:rotate(-8deg) scale(1.06)}
+.act.upcoming{border-color:color-mix(in srgb,var(--red) 55%,var(--line));background:linear-gradient(100deg,var(--red-soft),var(--surface) 45%)}
+.act.upcoming .date{border-right-color:color-mix(in srgb,var(--red) 40%,var(--line))}
+.tag.soon{display:inline-flex;align-items:center;gap:6px}
+.tag.soon::before{content:"";width:7px;height:7px;border-radius:50%;background:var(--red);animation:pulse 1.8s infinite}
+.act .t{font-size:17px}
+
+.cal .day.has{background:color-mix(in srgb,var(--red-soft) 55%,var(--surface))}
+.cal .day.today .num{animation:pulse 2s infinite}
+.cal .ev{transition:transform .15s}
+.cal button.day:hover .ev{transform:translateX(2px)}
+.day-panel>*{animation:rise .35s both}
+.day-panel{border-top:4px solid var(--red)}
+
+.gallery{display:grid;grid-template-columns:repeat(auto-fill,minmax(110px,1fr));gap:6px;margin-top:10px}
+.gallery button{all:unset;cursor:zoom-in;border-radius:8px;overflow:hidden;aspect-ratio:4/3;background:var(--tint);position:relative}
+.gallery img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .4s}
+.gallery button:hover img{transform:scale(1.07)}
+.gallery button:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.gallery .plus{position:absolute;inset:0;display:grid;place-items:center;background:rgba(10,18,39,.55);color:#fff;font-weight:700;font-size:18px}
+#lb{background:transparent;border:0;padding:0;width:fit-content;max-width:96vw;margin:auto;inset:0;overflow:visible}
+#lb[open]{display:flex;flex-direction:column;align-items:center}
+#lb::backdrop{background:rgba(5,10,25,.88)}
+#lb img{display:block;max-width:92vw;max-height:84vh;border-radius:8px;animation:rise .3s both}
+#lb .cap{color:#fff;text-align:center;font-size:14px;margin-top:8px}
+#lb .lbb{position:fixed;top:50%;transform:translateY(-50%);width:44px;height:44px;border-radius:50%;border:0;background:rgba(255,255,255,.15);color:#fff;font-size:24px;cursor:pointer}
+#lb .lbb:hover{background:rgba(255,255,255,.3)}
+#lb .prev{left:12px}#lb .next{right:12px}
+#lb .close{top:16px;right:16px;transform:none;font-size:20px}
+
+.to-top{position:fixed;right:18px;bottom:calc(18px + env(safe-area-inset-bottom,0px));width:44px;height:44px;border-radius:50%;border:0;background:var(--red);color:#fff;font-size:20px;cursor:pointer;box-shadow:0 8px 20px -8px rgba(200,16,46,.7);opacity:0;transform:translateY(12px);pointer-events:none;transition:opacity .3s,transform .3s;z-index:20}
+.to-top.show{opacity:1;transform:none;pointer-events:auto}
+@media (max-width:720px){.stats span{min-width:0;flex:1 1 30%;padding:8px 10px}.stats b{font-size:22px}.sec-head h2{font-size:25px}}
+@media (prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important}.reveal{opacity:1;transform:none}.masthead h1 em{background-size:100% 100%}}
 </style>
 
 <header class="masthead">
-  <div class="wrap">
+  <div class="wrap hero-in">
     <div class="eyebrow" id="h-school">Trường Đại học Hùng Vương TP. Hồ Chí Minh</div>
     <div class="school" id="h-faculty">Khoa Quản trị Kinh doanh – Marketing</div>
     <h1 id="h-name">Bộ môn <em>Marketing</em></h1>
@@ -180,15 +255,16 @@ html{scroll-behavior:smooth}
       <span><b id="s-upcoming">–</b>hoạt động sắp tới</span>
       <span><b id="s-links">–</b>liên kết</span>
     </div>
+    <a class="next-ev" id="next-ev" href="#lich" hidden></a>
   </div>
 </header>
 
 <nav class="tabs" aria-label="Mục lục">
   <div class="wrap">
-    <a href="#gioi-thieu">Giới thiệu</a>
-    <a href="#nhan-su">Nhân sự</a>
     <a href="#lich">Lịch</a>
     <a href="#hoat-dong">Hoạt động</a>
+    <a href="#gioi-thieu">Giới thiệu</a>
+    <a href="#nhan-su">Nhân sự</a>
     <a href="#lien-ket">Liên kết</a>
     <span class="mode" id="mode" hidden>Chế độ chỉnh sửa</span>
   </div>
@@ -196,28 +272,6 @@ html{scroll-behavior:smooth}
 
 <main class="wrap">
   <div class="empty" id="status" hidden></div>
-
-  <section id="gioi-thieu">
-    <div class="sec-head">
-      <div><h2>Giới thiệu</h2><p>Thông tin chung và liên hệ của bộ môn</p></div>
-      <button class="btn edit-only" data-edit-info>Sửa thông tin</button>
-    </div>
-    <div class="about">
-      <div class="prose">
-        <div id="intro"><p class="empty">Chưa có phần giới thiệu. Người quản trị bấm “Sửa thông tin” để thêm.</p></div>
-        <div id="mission-wrap" hidden><h3>Sứ mệnh &amp; định hướng</h3><p id="mission"></p></div>
-      </div>
-      <dl class="contact" id="contact"></dl>
-    </div>
-  </section>
-
-  <section id="nhan-su">
-    <div class="sec-head">
-      <div><h2>Nhân sự</h2><p>Giảng viên và cán bộ của bộ môn</p></div>
-      <button class="btn primary edit-only" data-add="staff">+ Thêm giảng viên</button>
-    </div>
-    <div class="staff" id="staff-list"></div>
-  </section>
 
   <section id="lich">
     <div class="sec-head">
@@ -234,7 +288,6 @@ html{scroll-behavior:smooth}
       <aside class="day-panel" id="day-panel" aria-live="polite"></aside>
     </div>
   </section>
-
   <section id="hoat-dong">
     <div class="sec-head">
       <div><h2>Hoạt động &amp; tin tức</h2><p>Seminar, hội thảo, thông báo và hoạt động của bộ môn</p></div>
@@ -243,7 +296,26 @@ html{scroll-behavior:smooth}
     <div class="filters" id="act-filters" role="group" aria-label="Lọc theo loại"></div>
     <div id="act-list"></div>
   </section>
-
+  <section id="gioi-thieu">
+    <div class="sec-head">
+      <div><h2>Giới thiệu</h2><p>Thông tin chung và liên hệ của bộ môn</p></div>
+      <button class="btn edit-only" data-edit-info>Sửa thông tin</button>
+    </div>
+    <div class="about">
+      <div class="prose">
+        <div id="intro"><p class="empty">Chưa có phần giới thiệu. Người quản trị bấm “Sửa thông tin” để thêm.</p></div>
+        <div id="mission-wrap" hidden><h3>Sứ mệnh &amp; định hướng</h3><p id="mission"></p></div>
+      </div>
+      <dl class="contact" id="contact"></dl>
+    </div>
+  </section>
+  <section id="nhan-su">
+    <div class="sec-head">
+      <div><h2>Nhân sự</h2><p>Giảng viên và cán bộ của bộ môn</p></div>
+      <button class="btn primary edit-only" data-add="staff">+ Thêm giảng viên</button>
+    </div>
+    <div class="staff" id="staff-list"></div>
+  </section>
   <section id="lien-ket">
     <div class="sec-head">
       <div><h2>Kho liên kết</h2><p>Tài liệu, biểu mẫu, thư mục chung và website liên quan</p></div>
@@ -271,6 +343,15 @@ html{scroll-behavior:smooth}
     </div>
   </form>
 </dialog>
+
+<dialog id="lb" aria-label="Xem ảnh">
+  <img id="lb-img" alt="">
+  <div class="cap" id="lb-cap"></div>
+  <button class="lbb prev" id="lb-prev" aria-label="Ảnh trước">‹</button>
+  <button class="lbb next" id="lb-next" aria-label="Ảnh sau">›</button>
+  <button class="lbb close" id="lb-close" aria-label="Đóng">✕</button>
+</dialog>
+<button class="to-top" id="to-top" aria-label="Lên đầu trang">↑</button>
 
 <script>
 (function(){
@@ -304,6 +385,15 @@ html{scroll-behavior:smooth}
   const state = { info:{}, staff:[], activities:[], courses:[], links:[] };
   let db = null, canEdit = false, actFilter = "Tất cả", linkQ = "";
 
+  const RM = matchMedia("(prefers-reduced-motion: reduce)").matches;
+  function setStat(id,n){ const el=document.getElementById(id); const from=parseInt(el.textContent)||0; if(RM||from===n){el.textContent=n;return;}
+    const t0=performance.now(), dur=800; (function f(t){ const k=Math.min(1,(t-t0)/dur), e=1-Math.pow(1-k,3); el.textContent=Math.round(from+(n-from)*e); if(k<1) requestAnimationFrame(f); })(t0); }
+  function stagger(el){ if(!el) return; el.classList.remove("stagger"); [...el.children].forEach((c,i)=>c.style.setProperty("--i",Math.min(i,10))); void el.offsetWidth; el.classList.add("stagger"); }
+  function imgSrc(x){ const s=String((x&&typeof x==="object")?x.src:x||"").trim(); if(!s) return ""; return /^[a-z][a-z0-9+.-]*:/i.test(s) ? safeUrl(s) : s; }
+  function imgCap(x){ return (x&&typeof x==="object"&&x.caption)||""; }
+  let lbList=[], lbIdx=0;
+  function gallery(a, max){ const imgs=(a.images||[]).filter(imgSrc); if(!imgs.length) return ""; const n=max||imgs.length;
+    return `<div class="gallery">${imgs.slice(0,n).map((x,i)=>`<button data-lb="${esc(a._id)}" data-idx="${i}" aria-label="Xem ảnh ${i+1} – ${esc(a.title)}"><img src="${esc(imgSrc(x))}" alt="${esc(imgCap(x)||a.title)}" loading="lazy">${i===n-1&&imgs.length>n?`<span class="plus">+${imgs.length-n}</span>`:""}</button>`).join("")}</div>`; }
   function toast(msg){ const t=document.createElement("div"); t.className="toast"; t.textContent=msg; document.body.appendChild(t); setTimeout(()=>t.remove(),2200); }
   function initials(n){ const p=String(n||"").trim().split(/\s+/); return (p[p.length-1]||"?").charAt(0).toUpperCase(); }
   function today(){ const d=new Date(); return d.getFullYear()+"-"+String(d.getMonth()+1).padStart(2,"0")+"-"+String(d.getDate()).padStart(2,"0"); }
@@ -324,7 +414,7 @@ html{scroll-behavior:smooth}
   }
   function renderStaff(){
     const L = [...state.staff].sort((a,b)=>(+a.order||999)-(+b.order||999) || String(a.name).localeCompare(String(b.name),"vi"));
-    $("#s-staff").textContent = L.length;
+    setStat("s-staff", L.length);
     $("#staff-list").innerHTML = L.length ? L.map(p=>`
       <article class="person">
         <div class="top"><div class="avatar" aria-hidden="true">${esc(initials(p.name))}</div>
@@ -333,6 +423,7 @@ html{scroll-behavior:smooth}
         ${p.email?`<div class="meta">${esc(p.email)}</div>`:""}
         ${actions("staff",p._id)}
       </article>`).join("") : `<div class="empty" style="grid-column:1/-1">Chưa có giảng viên nào.${canEdit?" Bấm “+ Thêm giảng viên” để bắt đầu.":""}</div>`;
+    stagger($("#staff-list"));
   }
   function actCard(a, soon){
     const [y,m,d] = String(a.date||"").split("-");
@@ -342,6 +433,7 @@ html{scroll-behavior:smooth}
         <div class="t">${esc(a.title)}</div>
         <div class="tagline">${soon?`<span class="tag soon">Sắp diễn ra</span>`:""}${a.type?`<span class="tag">${esc(a.type)}</span>`:""}${a.location?`<span>${esc(a.location)}</span>`:""}</div>
         ${a.description?`<p class="desc">${esc(a.description)}</p>`:""}
+        ${gallery(a)}
         ${safeUrl(a.link)?`<div style="margin-top:6px"><a href="${esc(safeUrl(a.link))}" target="_blank" rel="noopener">Xem chi tiết ↗</a></div>`:""}
         ${actions("activities",a._id)}
       </div></article>`;
@@ -349,7 +441,7 @@ html{scroll-behavior:smooth}
   function renderActivities(){
     const t = today();
     const up = state.activities.filter(a=>(a.date||"")>=t);
-    $("#s-upcoming").textContent = up.length;
+    setStat("s-upcoming", up.length); renderNext(up);
     const types = ["Tất cả", ...ACT_TYPES.filter(x=>state.activities.some(a=>a.type===x))];
     if (!types.includes(actFilter)) actFilter = "Tất cả";
     $("#act-filters").innerHTML = state.activities.length ? types.map(x=>`<button class="chip" aria-pressed="${x===actFilter}" data-filter="${esc(x)}">${esc(x)}</button>`).join("") : "";
@@ -361,9 +453,19 @@ html{scroll-behavior:smooth}
       (upc.length?`<div class="act-group"><h3>Sắp diễn ra</h3><div class="acts">${upc.map(a=>actCard(a,true)).join("")}</div></div>`:"") +
       (past.length?`<div class="act-group"><h3>Đã diễn ra</h3><div class="acts">${past.map(a=>actCard(a,false)).join("")}</div></div>`:"") ||
       `<div class="empty">Không có hoạt động thuộc loại này.</div>`;
+    document.querySelectorAll("#act-list .acts").forEach(stagger);
   }
+  function renderNext(up){
+    const el=$("#next-ev"), n=[...up].sort((a,b)=>a.date.localeCompare(b.date))[0];
+    if(!n){ el.hidden=true; return; }
+    const [y,m,d]=n.date.split("-").map(Number), diff=Math.round((new Date(y,m-1,d)-new Date(...today().split("-").map((v,i)=>i===1?v-1:+v)))/864e5);
+    const cd = diff<=0?"Hôm nay":diff===1?"Ngày mai":`Còn ${diff} ngày`;
+    el.dataset.day=n.date; el.hidden=false;
+    el.innerHTML=`<span class="lbl"><i class="live-dot"></i>Sắp diễn ra</span><span class="tt">${esc(n.title)} · ${String(d).padStart(2,"0")}/${String(m).padStart(2,"0")}/${y}${n.location?` · ${esc(n.location)}`:""}</span><span class="cd">${cd}</span>`;
+  }
+  $("#next-ev").addEventListener("click",e=>{ const k=e.currentTarget.dataset.day; if(!k) return; selDay=k; viewY=+k.slice(0,4); viewM=+k.slice(5,7)-1; renderCalendar(); });
   function renderLinks(){
-    $("#s-links").textContent = state.links.length;
+    setStat("s-links", state.links.length);
     const q = linkQ.trim().toLowerCase();
     const L = state.links.filter(l=>!q || [l.title,l.note,l.url,l.group].join(" ").toLowerCase().includes(q));
     if (!state.links.length){ $("#link-list").innerHTML = `<div class="empty">Chưa có liên kết nào.${canEdit?" Bấm “+ Thêm liên kết” để lưu đường link đầu tiên.":""}</div>`; return; }
@@ -376,6 +478,7 @@ html{scroll-behavior:smooth}
         ${u?`<a href="${esc(u)}" target="_blank" rel="noopener">${esc(l.title)} ↗</a>`:`<span>${esc(l.title)}</span>`}
         <span class="host">${esc(hostOf(l.url))}</span>${l.note?`<span class="note">${esc(l.note)}</span>`:""}
         ${actions("links",l._id)}</li>`;}).join("")}</ul></div>`;}).join("")}</div>`;
+    stagger($("#link-list .link-groups"));
   }
   /* ---------- calendar ---------- */
   const MONTHS = ["Tháng 1","Tháng 2","Tháng 3","Tháng 4","Tháng 5","Tháng 6","Tháng 7","Tháng 8","Tháng 9","Tháng 10","Tháng 11","Tháng 12"];
@@ -394,7 +497,7 @@ html{scroll-behavior:smooth}
       const d = new Date(start.getFullYear(), start.getMonth(), start.getDate()+i);
       if (i===35 && d.getMonth()!==viewM) break;
       const k = iso(d), evs = eventsOn(k);
-      const cls = ["day", d.getMonth()!==viewM?"out":"", k===t?"today":"", k===selDay?"sel":"", k<t?"past":""].filter(Boolean).join(" ");
+      const cls = ["day", d.getMonth()!==viewM?"out":"", k===t?"today":"", k===selDay?"sel":"", k<t?"past":"", evs.length?"has":""].filter(Boolean).join(" ");
       html += `<button class="${cls}" data-day="${k}" aria-label="${WD_LONG[d.getDay()]} ${d.getDate()}/${d.getMonth()+1}/${d.getFullYear()}${evs.length?", "+evs.length+" hoạt động":""}"${k===selDay?' aria-selected="true"':""}>
         <span class="num">${d.getDate()}</span>
         ${evs.slice(0,2).map(a=>`<span class="ev" title="${esc(a.title)}">${esc(a.title)}</span>`).join("")}
@@ -413,6 +516,7 @@ html{scroll-behavior:smooth}
       ${evs.length ? evs.map(a=>`<div class="item"><div class="t">${esc(a.title)}</div>
         <div class="tagline">${a.type?`<span class="tag">${esc(a.type)}</span>`:""}${a.location?`<span>${esc(a.location)}</span>`:""}</div>
         ${a.description?`<p>${esc(a.description)}</p>`:""}
+        ${gallery(a,3)}
         ${safeUrl(a.link)?`<div style="margin-top:4px;font-size:14px"><a href="${esc(safeUrl(a.link))}" target="_blank" rel="noopener">Xem chi tiết ↗</a></div>`:""}
         ${actions("activities",a._id)}</div>`).join("")
         : `<div class="none">Không có hoạt động nào trong ngày này.</div>`}
@@ -474,6 +578,7 @@ html{scroll-behavior:smooth}
   /* ---------- events ---------- */
   document.addEventListener("click", async e=>{
     const t = e.target.closest("button"); if (!t) return;
+    if (t.dataset.lb){ const a=state.activities.find(x=>x._id===t.dataset.lb); if(a){ lbList=(a.images||[]).filter(imgSrc).map(x=>({src:imgSrc(x),cap:imgCap(x)||a.title})); showLb(+t.dataset.idx); } return; }
     if (t.dataset.add) openForm(t.dataset.add);
     else if (t.dataset.addDay) openForm("activities", null, t.dataset.addDay);
     else if (t.hasAttribute("data-edit-info")) openForm("info");
@@ -489,6 +594,31 @@ html{scroll-behavior:smooth}
     }
   });
   $("#link-q").addEventListener("input", e=>{ linkQ = e.target.value; renderLinks(); });
+
+  /* ---------- lightbox ---------- */
+  const lb=$("#lb");
+  function showLb(i){ if(!lbList.length) return; lbIdx=(i+lbList.length)%lbList.length; const it=lbList[lbIdx]; const im=$("#lb-img");
+    im.style.animation="none"; void im.offsetWidth; im.style.animation=""; im.src=it.src; im.alt=it.cap; $("#lb-cap").textContent=it.cap+(lbList.length>1?`  (${lbIdx+1}/${lbList.length})`:"");
+    $("#lb-prev").hidden=$("#lb-next").hidden=lbList.length<2; if(!lb.open) lb.showModal(); }
+  $("#lb-prev").addEventListener("click",e=>{e.stopPropagation();showLb(lbIdx-1);});
+  $("#lb-next").addEventListener("click",e=>{e.stopPropagation();showLb(lbIdx+1);});
+  $("#lb-close").addEventListener("click",()=>lb.close());
+  lb.addEventListener("click",e=>{ if(e.target===lb) lb.close(); });
+  lb.addEventListener("keydown",e=>{ if(e.key==="ArrowLeft") showLb(lbIdx-1); if(e.key==="ArrowRight") showLb(lbIdx+1); });
+
+  /* ---------- effects: reveal on scroll, active tab, back to top ---------- */
+  const secs=[...document.querySelectorAll("main section")];
+  if ("IntersectionObserver" in window && !RM){
+    secs.forEach(s=>s.classList.add("reveal"));
+    const io=new IntersectionObserver(es=>es.forEach(en=>{ if(en.isIntersecting){ en.target.classList.add("in"); io.unobserve(en.target); } }),{threshold:.08});
+    secs.forEach(s=>io.observe(s));
+  } else secs.forEach(s=>s.classList.add("in"));
+  const navLinks=[...document.querySelectorAll("nav.tabs a")], navBar=document.querySelector("nav.tabs .wrap");
+  function spy(){ let cur=secs[0]; for(const s of secs){ if(s.getBoundingClientRect().top<140) cur=s; }
+    navLinks.forEach(a=>{ const on=a.getAttribute("href")==="#"+cur.id; if(on&&!a.classList.contains("active")){ navBar.scrollTo({left:a.offsetLeft-20,behavior:RM?"auto":"smooth"}); } a.classList.toggle("active",on); });
+    $("#to-top").classList.toggle("show", scrollY>600); }
+  addEventListener("scroll",()=>requestAnimationFrame(spy),{passive:true}); spy();
+  $("#to-top").addEventListener("click",()=>scrollTo({top:0,behavior:RM?"auto":"smooth"}));
 
   /* ---------- boot ---------- */
   renderAll();
