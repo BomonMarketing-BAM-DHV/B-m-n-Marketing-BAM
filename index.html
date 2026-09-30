@@ -1,0 +1,513 @@
+<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#faf9f5;color:#141413}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
+<title>Bộ môn Marketing</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700&family=Lora:ital,wght@0,500;0,600;0,700;1,500&display=swap">
+<style>
+/* Layout: navy masthead with red rule, sticky tab bar, single column of sections; identity = red, deep navy, white */
+:root{
+  --bg:#ffffff; --surface:#ffffff; --tint:#f3f5fa; --fg:#101a33; --muted:#56607a; --line:#dde2ee;
+  --navy:#12295c; --navy-fg:#ffffff; --accent:#12295c; --accent-soft:#e8edf8; --accent-fg:#ffffff;
+  --red:#c8102e; --red-soft:#fce8eb; --amber:#c8102e; --amber-soft:#fce8eb; --danger:#b3261e; --danger-soft:#fbe6e4;
+  --f-display:"Lora", Georgia, "Times New Roman", serif;
+  --f-body:"Be Vietnam Pro", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  --r:10px;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --bg:#0a1227; --surface:#101c3a; --tint:#0d1731; --fg:#e8ecf6; --muted:#9aa6c2; --line:#223259;
+  --navy:#0e1d44; --navy-fg:#ffffff; --accent:#9db6ff; --accent-soft:#1a2b57; --accent-fg:#0a1227;
+  --red:#ff5c70; --red-soft:#3a1522; --amber:#ff5c70; --amber-soft:#3a1522; --danger:#f2867e; --danger-soft:#3a1a18; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#0a1227; --surface:#101c3a; --tint:#0d1731; --fg:#e8ecf6; --muted:#9aa6c2; --line:#223259;
+  --navy:#0e1d44; --navy-fg:#ffffff; --accent:#9db6ff; --accent-soft:#1a2b57; --accent-fg:#0a1227;
+  --red:#ff5c70; --red-soft:#3a1522; --amber:#ff5c70; --amber-soft:#3a1522; --danger:#f2867e; --danger-soft:#3a1a18; color-scheme:dark}
+
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--fg);font-family:var(--f-body);font-size:15px;line-height:1.6}
+a{color:var(--accent)}
+h1,h2,h3{font-family:var(--f-display);text-wrap:balance;line-height:1.25;margin:0}
+.wrap{max-width:1040px;margin:0 auto;padding-inline:20px}
+button,input,select,textarea{font:inherit;color:inherit}
+:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+
+/* Header */
+.masthead{padding-block:40px 28px;background:var(--navy);color:var(--navy-fg);border-bottom:4px solid var(--red)}
+.masthead .eyebrow{font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:rgba(255,255,255,.72);font-weight:600}
+.masthead h1{font-size:clamp(28px,5vw,44px);margin-top:10px;color:#fff}
+.masthead h1 em{font-style:normal;color:#fff;box-shadow:inset 0 -.18em 0 var(--red)}
+.masthead .school{margin-top:4px;color:rgba(255,255,255,.88);font-weight:500;font-size:16px}
+.stats{display:flex;flex-wrap:wrap;gap:8px 24px;margin-top:20px;font-size:13px;color:rgba(255,255,255,.75)}
+.stats b{font-size:18px;color:#fff;font-variant-numeric:tabular-nums;margin-right:4px}
+
+nav.tabs{position:sticky;top:env(safe-area-inset-top,0px);z-index:10;background:color-mix(in srgb,var(--bg) 92%,transparent);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+nav.tabs .wrap{display:flex;gap:4px;overflow-x:auto;padding-block:8px;align-items:center}
+nav.tabs a{white-space:nowrap;text-decoration:none;color:var(--muted);padding:6px 12px;border-radius:999px;font-weight:500;font-size:14px}
+nav.tabs a:hover{color:var(--fg);background:var(--accent-soft)}
+nav.tabs .mode{margin-left:auto;font-size:12px;white-space:nowrap;padding:4px 10px;border-radius:999px;background:var(--red-soft);color:var(--red);font-weight:600}
+
+main{padding-block:12px 64px}
+section{padding-block:36px;border-bottom:1px solid var(--line);scroll-margin-top:60px}
+section:last-child{border-bottom:0}
+.sec-head{display:flex;flex-wrap:wrap;align-items:baseline;justify-content:space-between;gap:12px;margin-bottom:18px}
+.sec-head h2{font-size:26px;padding-left:12px;border-left:4px solid var(--red)}
+.sec-head p{margin:4px 0 0;color:var(--muted);font-size:14px}
+
+.btn{border:1px solid var(--line);background:var(--surface);border-radius:8px;padding:6px 12px;cursor:pointer;font-size:14px;font-weight:500}
+.btn:hover{border-color:var(--accent);color:var(--accent)}
+.btn.primary{background:var(--red);color:#fff;border-color:var(--red)}
+.btn.primary:hover{filter:brightness(1.1);color:#fff}
+.btn.small{padding:2px 8px;font-size:12px}
+.btn.danger{color:var(--danger)}
+.btn.danger.armed{background:var(--danger-soft);border-color:var(--danger)}
+.edit-only{display:none}
+body.can-edit .edit-only{display:inline-flex}
+.row-actions{gap:6px;flex-wrap:wrap}
+
+.empty{border:1px dashed var(--line);border-radius:var(--r);padding:22px;color:var(--muted);text-align:center;font-size:14px}
+
+/* About */
+.about{display:grid;grid-template-columns:minmax(0,1.6fr) minmax(0,1fr);gap:28px}
+.about .prose{max-width:65ch;min-width:0}
+.about .prose p{margin:0 0 12px;white-space:pre-line}
+.about h3{font-size:17px;margin:18px 0 6px}
+.contact{background:var(--tint);border:1px solid var(--line);border-radius:var(--r);padding:18px;display:grid;gap:12px;align-content:start;min-width:0}
+.contact dt{font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);font-weight:600}
+.contact dd{margin:2px 0 0;word-break:break-word}
+.copy{margin-left:6px}
+
+/* Staff */
+.staff{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:14px}
+.person{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:16px;display:flex;flex-direction:column;gap:6px;min-width:0}
+.person .top{display:flex;gap:12px;align-items:center}
+.avatar{flex:none;width:44px;height:44px;border-radius:50%;background:var(--accent-soft);color:var(--accent);display:grid;place-items:center;font-family:var(--f-display);font-weight:700;font-size:17px}
+.person .name{font-weight:600;line-height:1.3}
+.person .title{font-size:13px;color:var(--muted)}
+.person .role{align-self:flex-start;font-size:12px;font-weight:600;color:var(--accent);background:var(--accent-soft);padding:1px 8px;border-radius:999px}
+.person .meta{font-size:13px;color:var(--muted);word-break:break-word}
+
+/* Activities */
+.filters{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:16px}
+.chip{border:1px solid var(--line);background:var(--surface);border-radius:999px;padding:3px 12px;font-size:13px;cursor:pointer}
+.chip[aria-pressed="true"]{background:var(--navy);border-color:var(--navy);color:#fff}
+.act-group h3{font-family:var(--f-body);font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin:18px 0 8px}
+.acts{display:grid;gap:10px}
+.act{display:grid;grid-template-columns:72px minmax(0,1fr);gap:16px;background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:14px 16px}
+.date{text-align:center;border-right:1px solid var(--line);padding-right:12px;font-variant-numeric:tabular-nums}
+.date .d{font-family:var(--f-display);font-size:28px;font-weight:700;line-height:1}
+.date .m{font-size:12px;color:var(--muted);margin-top:4px}
+.act.upcoming .date .d{color:var(--amber)}
+.act .t{font-weight:600;font-size:16px}
+.tagline{display:flex;flex-wrap:wrap;gap:6px 12px;font-size:13px;color:var(--muted);margin-top:2px;align-items:center}
+.tag{font-size:12px;font-weight:600;padding:1px 8px;border-radius:999px;background:var(--accent-soft);color:var(--accent)}
+.tag.soon{background:var(--amber-soft);color:var(--amber)}
+.act .desc{margin:6px 0 0;white-space:pre-line}
+
+/* Calendar */
+.cal-nav{display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+.cal-nav strong{min-width:130px;text-align:center;font-family:var(--f-display);font-size:17px}
+.cal-layout{display:grid;grid-template-columns:minmax(0,1.7fr) minmax(0,1fr);gap:20px;align-items:start}
+.cal{display:grid;grid-template-columns:repeat(7,minmax(0,1fr));border:1px solid var(--line);border-radius:var(--r);overflow:hidden;background:var(--surface)}
+.cal .wd{font-size:11px;letter-spacing:.08em;text-transform:uppercase;font-weight:600;color:#fff;background:var(--navy);text-align:center;padding:8px 0}
+.cal .wd.sun{color:#ffb3bd}
+.cal button.day{all:unset;box-sizing:border-box;cursor:pointer;min-height:84px;padding:6px;border-right:1px solid var(--line);border-bottom:1px solid var(--line);display:flex;flex-direction:column;gap:3px;min-width:0;font-variant-numeric:tabular-nums}
+.cal button.day:nth-of-type(7n){border-right:0}
+.cal button.day:hover{background:var(--tint)}
+.cal button.day:focus-visible{outline:2px solid var(--accent);outline-offset:-2px}
+.cal .day.out{color:var(--muted);opacity:.5}
+.cal .num{font-size:13px;font-weight:600;width:24px;height:24px;display:grid;place-items:center;border-radius:50%}
+.cal .day.today .num{background:var(--red);color:#fff}
+.cal .day.sel{background:var(--accent-soft);box-shadow:inset 0 0 0 2px var(--accent)}
+.cal .ev{font-size:11px;line-height:1.3;padding:1px 5px;border-radius:4px;background:var(--navy);color:#fff;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.cal .day.past .ev{background:var(--tint);color:var(--muted)}
+.cal .more{font-size:11px;color:var(--muted)}
+.cal .dots{display:none;gap:3px}
+.cal .dots i{width:6px;height:6px;border-radius:50%;background:var(--red)}
+.day-panel{background:var(--tint);border:1px solid var(--line);border-radius:var(--r);padding:18px;display:grid;gap:12px;min-width:0}
+.day-panel .when{font-size:12px;letter-spacing:.08em;text-transform:uppercase;font-weight:600;color:var(--red)}
+.day-panel h3{font-size:20px}
+.day-panel .item{background:var(--surface);border:1px solid var(--line);border-left:4px solid var(--red);border-radius:8px;padding:10px 12px;min-width:0}
+.day-panel .item .t{font-weight:600}
+.day-panel .item p{margin:4px 0 0;font-size:14px;white-space:pre-line}
+.day-panel .none{color:var(--muted);font-size:14px}
+@media (max-width:720px){
+  .cal-layout{grid-template-columns:1fr}
+  .cal button.day{min-height:52px;align-items:center}
+  .cal .ev,.cal .more{display:none}
+  .cal .dots{display:flex}
+}
+
+/* Links */
+.search{width:100%;max-width:320px;border:1px solid var(--line);background:var(--surface);border-radius:8px;padding:7px 12px}
+.link-groups{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:16px}
+.lgroup{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:16px;min-width:0}
+.lgroup h3{font-size:17px;margin-bottom:8px}
+.lgroup ul{list-style:none;margin:0;padding:0;display:grid;gap:10px}
+.lgroup li{display:flex;flex-direction:column;gap:2px;min-width:0}
+.lgroup a{font-weight:500;word-break:break-word}
+.lgroup .note{font-size:13px;color:var(--muted)}
+.lgroup .host{font-size:12px;color:var(--muted)}
+
+footer{border-top:1px solid var(--line);padding-block:24px;color:var(--muted);font-size:13px}
+
+/* Dialog */
+dialog{border:1px solid var(--line);border-radius:14px;background:var(--surface);color:var(--fg);padding:0;width:min(560px,calc(100vw - 32px))}
+dialog::backdrop{background:rgba(10,20,17,.45)}
+dialog form{padding:22px;display:grid;gap:12px}
+dialog h3{font-size:20px}
+dialog label{display:grid;gap:4px;font-size:13px;font-weight:500;color:var(--muted)}
+dialog input,dialog select,dialog textarea{border:1px solid var(--line);border-radius:8px;padding:8px 10px;background:var(--bg);width:100%}
+dialog textarea{min-height:90px;resize:vertical}
+.form-actions{display:flex;justify-content:flex-end;gap:8px;margin-top:4px}
+.form-err{color:var(--danger);font-size:13px;min-height:1em}
+.toast{position:fixed;left:50%;bottom:calc(20px + env(safe-area-inset-bottom,0px));transform:translateX(-50%);background:var(--fg);color:var(--bg);padding:8px 16px;border-radius:999px;font-size:14px;z-index:50}
+
+@media (max-width:720px){
+  .about{grid-template-columns:1fr}
+  .act{grid-template-columns:56px minmax(0,1fr);gap:12px}
+  .date .d{font-size:22px}
+}
+@media (prefers-reduced-motion:reduce){*{scroll-behavior:auto!important}}
+html{scroll-behavior:smooth}
+</style>
+
+<header class="masthead">
+  <div class="wrap">
+    <div class="eyebrow" id="h-school">Trường Đại học Hùng Vương TP. Hồ Chí Minh</div>
+    <div class="school" id="h-faculty">Khoa Quản trị Kinh doanh – Marketing</div>
+    <h1 id="h-name">Bộ môn <em>Marketing</em></h1>
+    <div class="stats" aria-live="polite">
+      <span><b id="s-staff">–</b>giảng viên</span>
+      <span><b id="s-upcoming">–</b>hoạt động sắp tới</span>
+      <span><b id="s-links">–</b>liên kết</span>
+    </div>
+  </div>
+</header>
+
+<nav class="tabs" aria-label="Mục lục">
+  <div class="wrap">
+    <a href="#gioi-thieu">Giới thiệu</a>
+    <a href="#nhan-su">Nhân sự</a>
+    <a href="#lich">Lịch</a>
+    <a href="#hoat-dong">Hoạt động</a>
+    <a href="#lien-ket">Liên kết</a>
+    <span class="mode" id="mode" hidden>Chế độ chỉnh sửa</span>
+  </div>
+</nav>
+
+<main class="wrap">
+  <div class="empty" id="status" hidden></div>
+
+  <section id="gioi-thieu">
+    <div class="sec-head">
+      <div><h2>Giới thiệu</h2><p>Thông tin chung và liên hệ của bộ môn</p></div>
+      <button class="btn edit-only" data-edit-info>Sửa thông tin</button>
+    </div>
+    <div class="about">
+      <div class="prose">
+        <div id="intro"><p class="empty">Chưa có phần giới thiệu. Người quản trị bấm “Sửa thông tin” để thêm.</p></div>
+        <div id="mission-wrap" hidden><h3>Sứ mệnh &amp; định hướng</h3><p id="mission"></p></div>
+      </div>
+      <dl class="contact" id="contact"></dl>
+    </div>
+  </section>
+
+  <section id="nhan-su">
+    <div class="sec-head">
+      <div><h2>Nhân sự</h2><p>Giảng viên và cán bộ của bộ môn</p></div>
+      <button class="btn primary edit-only" data-add="staff">+ Thêm giảng viên</button>
+    </div>
+    <div class="staff" id="staff-list"></div>
+  </section>
+
+  <section id="lich">
+    <div class="sec-head">
+      <div><h2>Lịch hoạt động</h2><p id="cal-sub">Bấm vào một ngày để xem các hoạt động trong ngày</p></div>
+      <div class="cal-nav">
+        <button class="btn small" id="cal-prev" aria-label="Tháng trước">‹</button>
+        <strong id="cal-month" aria-live="polite"></strong>
+        <button class="btn small" id="cal-next" aria-label="Tháng sau">›</button>
+        <button class="btn small" id="cal-today">Hôm nay</button>
+      </div>
+    </div>
+    <div class="cal-layout">
+      <div class="cal" id="cal" role="grid" aria-label="Lịch tháng"></div>
+      <aside class="day-panel" id="day-panel" aria-live="polite"></aside>
+    </div>
+  </section>
+
+  <section id="hoat-dong">
+    <div class="sec-head">
+      <div><h2>Hoạt động &amp; tin tức</h2><p>Seminar, hội thảo, thông báo và hoạt động của bộ môn</p></div>
+      <button class="btn primary edit-only" data-add="activities">+ Thêm hoạt động</button>
+    </div>
+    <div class="filters" id="act-filters" role="group" aria-label="Lọc theo loại"></div>
+    <div id="act-list"></div>
+  </section>
+
+  <section id="lien-ket">
+    <div class="sec-head">
+      <div><h2>Kho liên kết</h2><p>Tài liệu, biểu mẫu, thư mục chung và website liên quan</p></div>
+      <div style="display:flex;gap:8px;flex-wrap:wrap">
+        <input class="search" id="link-q" type="search" placeholder="Tìm liên kết…" aria-label="Tìm liên kết">
+        <button class="btn primary edit-only" data-add="links">+ Thêm liên kết</button>
+      </div>
+    </div>
+    <div id="link-list"></div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap" id="foot">Bộ môn Marketing · Khoa Quản trị Kinh doanh – Marketing · Trường Đại học Hùng Vương TP. Hồ Chí Minh</div>
+</footer>
+
+<dialog id="dlg">
+  <form id="dlg-form" method="dialog">
+    <h3 id="dlg-title">Thêm</h3>
+    <div id="dlg-fields" style="display:grid;gap:12px"></div>
+    <div class="form-err" id="dlg-err"></div>
+    <div class="form-actions">
+      <button type="button" class="btn" id="dlg-cancel">Hủy</button>
+      <button type="submit" class="btn primary" id="dlg-save">Lưu</button>
+    </div>
+  </form>
+</dialog>
+
+<script>
+(function(){
+  const $ = s => document.querySelector(s);
+  const esc = s => String(s ?? "").replace(/[&<>"']/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+  const safeUrl = u => { try { const x = new URL(u); return /^https?:$/.test(x.protocol) ? x.href : ""; } catch { return ""; } };
+  const hostOf = u => { try { return new URL(u).hostname.replace(/^www\./,""); } catch { return ""; } };
+
+  const ACT_TYPES = ["Seminar","Hội thảo","Thông báo","Nghiên cứu khoa học","Hoạt động sinh viên","Tham quan – thực tế","Khác"];
+  const LINK_GROUPS = ["Tài liệu học tập","Biểu mẫu – văn bản","Thư mục chung","Website liên quan","Khác"];
+
+  const SCHEMAS = {
+    info: { label: "thông tin bộ môn", fields: [
+      {k:"name",l:"Tên bộ môn",req:1},{k:"faculty",l:"Khoa"},{k:"school",l:"Trường"},
+      {k:"intro",l:"Giới thiệu",type:"textarea"},{k:"mission",l:"Sứ mệnh & định hướng",type:"textarea"},
+      {k:"head",l:"Trưởng bộ môn"},{k:"office",l:"Văn phòng"},{k:"address",l:"Địa chỉ"},
+      {k:"email",l:"Email",type:"email"},{k:"phone",l:"Điện thoại"}]},
+    staff: { label: "giảng viên", fields: [
+      {k:"name",l:"Họ và tên",req:1},{k:"title",l:"Học hàm / học vị (VD: ThS., TS., PGS.TS.)"},
+      {k:"role",l:"Chức vụ (VD: Trưởng bộ môn, Giảng viên)"},{k:"expertise",l:"Chuyên môn / hướng nghiên cứu"},
+      {k:"email",l:"Email",type:"email"},{k:"order",l:"Thứ tự hiển thị",type:"number"}]},
+    activities: { label: "hoạt động", fields: [
+      {k:"title",l:"Tiêu đề",req:1},{k:"date",l:"Ngày",type:"date",req:1},
+      {k:"type",l:"Loại",type:"select",opts:ACT_TYPES},{k:"location",l:"Địa điểm / hình thức"},
+      {k:"description",l:"Mô tả",type:"textarea"},{k:"link",l:"Đường link (nếu có)",type:"url"}]},
+    links: { label: "liên kết", fields: [
+      {k:"title",l:"Tên liên kết",req:1},{k:"url",l:"Đường link",type:"url",req:1},
+      {k:"group",l:"Nhóm",type:"select",opts:LINK_GROUPS},{k:"note",l:"Ghi chú"}]}
+  };
+
+  const state = { info:{}, staff:[], activities:[], courses:[], links:[] };
+  let db = null, canEdit = false, actFilter = "Tất cả", linkQ = "";
+
+  function toast(msg){ const t=document.createElement("div"); t.className="toast"; t.textContent=msg; document.body.appendChild(t); setTimeout(()=>t.remove(),2200); }
+  function initials(n){ const p=String(n||"").trim().split(/\s+/); return (p[p.length-1]||"?").charAt(0).toUpperCase(); }
+  function today(){ const d=new Date(); return d.getFullYear()+"-"+String(d.getMonth()+1).padStart(2,"0")+"-"+String(d.getDate()).padStart(2,"0"); }
+  function actions(col,id){ return canEdit ? `<div class="row-actions edit-only"><button class="btn small" data-edit="${col}" data-id="${esc(id)}">Sửa</button><button class="btn small danger" data-del="${col}" data-id="${esc(id)}">Xóa</button></div>` : ""; }
+
+  /* ---------- render ---------- */
+  function renderInfo(){
+    const i = state.info;
+    if (i.name){ const n=i.name.replace(/^Bộ môn\s+/i,""); $("#h-name").innerHTML = "Bộ môn <em>"+esc(n)+"</em>"; }
+    if (i.faculty) $("#h-faculty").textContent = i.faculty;
+    if (i.school) $("#h-school").textContent = i.school;
+    $("#foot").textContent = [i.school, i.faculty, i.name||"Bộ môn Marketing"].filter(Boolean).join(" · ");
+    $("#intro").innerHTML = i.intro ? `<p>${esc(i.intro)}</p>` : `<p class="empty">Chưa có phần giới thiệu.${canEdit?" Bấm “Sửa thông tin” để thêm.":""}</p>`;
+    $("#mission-wrap").hidden = !i.mission; $("#mission").textContent = i.mission||"";
+    const rows = [["Trưởng bộ môn",i.head],["Văn phòng",i.office],["Địa chỉ",i.address],["Email",i.email,1],["Điện thoại",i.phone,1]].filter(r=>r[1]);
+    $("#contact").innerHTML = rows.length ? rows.map(([k,v,c])=>`<div><dt>${k}</dt><dd>${esc(v)}${c?` <button class="btn small copy" data-copy="${esc(v)}">Sao chép</button>`:""}</dd></div>`).join("")
+      : `<div><dt>Liên hệ</dt><dd style="color:var(--muted)">Chưa cập nhật thông tin liên hệ.</dd></div>`;
+  }
+  function renderStaff(){
+    const L = [...state.staff].sort((a,b)=>(+a.order||999)-(+b.order||999) || String(a.name).localeCompare(String(b.name),"vi"));
+    $("#s-staff").textContent = L.length;
+    $("#staff-list").innerHTML = L.length ? L.map(p=>`
+      <article class="person">
+        <div class="top"><div class="avatar" aria-hidden="true">${esc(initials(p.name))}</div>
+          <div style="min-width:0"><div class="name">${esc([p.title,p.name].filter(Boolean).join(" "))}</div>${p.expertise?`<div class="title">${esc(p.expertise)}</div>`:""}</div></div>
+        ${p.role?`<span class="role">${esc(p.role)}</span>`:""}
+        ${p.email?`<div class="meta">${esc(p.email)}</div>`:""}
+        ${actions("staff",p._id)}
+      </article>`).join("") : `<div class="empty" style="grid-column:1/-1">Chưa có giảng viên nào.${canEdit?" Bấm “+ Thêm giảng viên” để bắt đầu.":""}</div>`;
+  }
+  function actCard(a, soon){
+    const [y,m,d] = String(a.date||"").split("-");
+    return `<article class="act${soon?" upcoming":""}">
+      <div class="date"><div class="d">${esc(d||"–")}</div><div class="m">Th${esc(+m||"?")}/${esc(y||"")}</div></div>
+      <div style="min-width:0">
+        <div class="t">${esc(a.title)}</div>
+        <div class="tagline">${soon?`<span class="tag soon">Sắp diễn ra</span>`:""}${a.type?`<span class="tag">${esc(a.type)}</span>`:""}${a.location?`<span>${esc(a.location)}</span>`:""}</div>
+        ${a.description?`<p class="desc">${esc(a.description)}</p>`:""}
+        ${safeUrl(a.link)?`<div style="margin-top:6px"><a href="${esc(safeUrl(a.link))}" target="_blank" rel="noopener">Xem chi tiết ↗</a></div>`:""}
+        ${actions("activities",a._id)}
+      </div></article>`;
+  }
+  function renderActivities(){
+    const t = today();
+    const up = state.activities.filter(a=>(a.date||"")>=t);
+    $("#s-upcoming").textContent = up.length;
+    const types = ["Tất cả", ...ACT_TYPES.filter(x=>state.activities.some(a=>a.type===x))];
+    if (!types.includes(actFilter)) actFilter = "Tất cả";
+    $("#act-filters").innerHTML = state.activities.length ? types.map(x=>`<button class="chip" aria-pressed="${x===actFilter}" data-filter="${esc(x)}">${esc(x)}</button>`).join("") : "";
+    const L = state.activities.filter(a=>actFilter==="Tất cả"||a.type===actFilter);
+    const upc = L.filter(a=>(a.date||"")>=t).sort((a,b)=>a.date.localeCompare(b.date));
+    const past = L.filter(a=>(a.date||"")<t).sort((a,b)=>String(b.date).localeCompare(String(a.date)));
+    if (!state.activities.length){ $("#act-list").innerHTML = `<div class="empty">Chưa có hoạt động nào.${canEdit?" Bấm “+ Thêm hoạt động” để đăng tin đầu tiên.":""}</div>`; return; }
+    $("#act-list").innerHTML =
+      (upc.length?`<div class="act-group"><h3>Sắp diễn ra</h3><div class="acts">${upc.map(a=>actCard(a,true)).join("")}</div></div>`:"") +
+      (past.length?`<div class="act-group"><h3>Đã diễn ra</h3><div class="acts">${past.map(a=>actCard(a,false)).join("")}</div></div>`:"") ||
+      `<div class="empty">Không có hoạt động thuộc loại này.</div>`;
+  }
+  function renderLinks(){
+    $("#s-links").textContent = state.links.length;
+    const q = linkQ.trim().toLowerCase();
+    const L = state.links.filter(l=>!q || [l.title,l.note,l.url,l.group].join(" ").toLowerCase().includes(q));
+    if (!state.links.length){ $("#link-list").innerHTML = `<div class="empty">Chưa có liên kết nào.${canEdit?" Bấm “+ Thêm liên kết” để lưu đường link đầu tiên.":""}</div>`; return; }
+    if (!L.length){ $("#link-list").innerHTML = `<div class="empty">Không tìm thấy liên kết khớp với “${esc(linkQ)}”.</div>`; return; }
+    const groups = [...LINK_GROUPS, ...new Set(L.map(l=>l.group).filter(g=>g&&!LINK_GROUPS.includes(g)))];
+    $("#link-list").innerHTML = `<div class="link-groups">${groups.map(g=>{
+      const items = L.filter(l=>(l.group||"Khác")===g).sort((a,b)=>String(a.title).localeCompare(String(b.title),"vi"));
+      if (!items.length) return "";
+      return `<div class="lgroup"><h3>${esc(g)}</h3><ul>${items.map(l=>{ const u=safeUrl(l.url); return `<li>
+        ${u?`<a href="${esc(u)}" target="_blank" rel="noopener">${esc(l.title)} ↗</a>`:`<span>${esc(l.title)}</span>`}
+        <span class="host">${esc(hostOf(l.url))}</span>${l.note?`<span class="note">${esc(l.note)}</span>`:""}
+        ${actions("links",l._id)}</li>`;}).join("")}</ul></div>`;}).join("")}</div>`;
+  }
+  /* ---------- calendar ---------- */
+  const MONTHS = ["Tháng 1","Tháng 2","Tháng 3","Tháng 4","Tháng 5","Tháng 6","Tháng 7","Tháng 8","Tháng 9","Tháng 10","Tháng 11","Tháng 12"];
+  const WD_LONG = ["Chủ nhật","Thứ Hai","Thứ Ba","Thứ Tư","Thứ Năm","Thứ Sáu","Thứ Bảy"];
+  const iso = d => d.getFullYear()+"-"+String(d.getMonth()+1).padStart(2,"0")+"-"+String(d.getDate()).padStart(2,"0");
+  let curToday = today(), selDay = curToday, viewY = +curToday.slice(0,4), viewM = +curToday.slice(5,7)-1;
+  function eventsOn(day){ return state.activities.filter(a=>a.date===day).sort((a,b)=>String(a.title).localeCompare(String(b.title),"vi")); }
+  function renderCalendar(){
+    const t = today();
+    $("#cal-month").textContent = MONTHS[viewM]+" / "+viewY;
+    const first = new Date(viewY, viewM, 1);
+    const offset = (first.getDay()+6)%7; // Monday first
+    const start = new Date(viewY, viewM, 1-offset);
+    let html = ["T2","T3","T4","T5","T6","T7","CN"].map((w,i)=>`<div class="wd${i===6?" sun":""}" role="columnheader">${w}</div>`).join("");
+    for (let i=0;i<42;i++){
+      const d = new Date(start.getFullYear(), start.getMonth(), start.getDate()+i);
+      if (i===35 && d.getMonth()!==viewM) break;
+      const k = iso(d), evs = eventsOn(k);
+      const cls = ["day", d.getMonth()!==viewM?"out":"", k===t?"today":"", k===selDay?"sel":"", k<t?"past":""].filter(Boolean).join(" ");
+      html += `<button class="${cls}" data-day="${k}" aria-label="${WD_LONG[d.getDay()]} ${d.getDate()}/${d.getMonth()+1}/${d.getFullYear()}${evs.length?", "+evs.length+" hoạt động":""}"${k===selDay?' aria-selected="true"':""}>
+        <span class="num">${d.getDate()}</span>
+        ${evs.slice(0,2).map(a=>`<span class="ev" title="${esc(a.title)}">${esc(a.title)}</span>`).join("")}
+        ${evs.length>2?`<span class="more">+${evs.length-2} hoạt động</span>`:""}
+        ${evs.length?`<span class="dots">${evs.slice(0,3).map(()=>"<i></i>").join("")}</span>`:""}
+      </button>`;
+    }
+    $("#cal").innerHTML = html;
+    renderDayPanel();
+  }
+  function renderDayPanel(){
+    const t = today(), [y,m,d] = selDay.split("-").map(Number), dt = new Date(y,m-1,d);
+    const evs = eventsOn(selDay);
+    const label = selDay===t ? "Hôm nay" : (selDay<t ? "Đã qua" : "Sắp tới");
+    $("#day-panel").innerHTML = `<div><div class="when">${label}</div><h3>${WD_LONG[dt.getDay()]}, ${String(d).padStart(2,"0")}/${String(m).padStart(2,"0")}/${y}</h3></div>
+      ${evs.length ? evs.map(a=>`<div class="item"><div class="t">${esc(a.title)}</div>
+        <div class="tagline">${a.type?`<span class="tag">${esc(a.type)}</span>`:""}${a.location?`<span>${esc(a.location)}</span>`:""}</div>
+        ${a.description?`<p>${esc(a.description)}</p>`:""}
+        ${safeUrl(a.link)?`<div style="margin-top:4px;font-size:14px"><a href="${esc(safeUrl(a.link))}" target="_blank" rel="noopener">Xem chi tiết ↗</a></div>`:""}
+        ${actions("activities",a._id)}</div>`).join("")
+        : `<div class="none">Không có hoạt động nào trong ngày này.</div>`}
+      ${canEdit?`<div><button class="btn primary small" data-add-day="${selDay}">+ Thêm hoạt động vào ngày này</button></div>`:""}`;
+  }
+  $("#cal-prev").addEventListener("click",()=>{ viewM--; if(viewM<0){viewM=11;viewY--;} renderCalendar(); });
+  $("#cal-next").addEventListener("click",()=>{ viewM++; if(viewM>11){viewM=0;viewY++;} renderCalendar(); });
+  $("#cal-today").addEventListener("click",()=>{ const t=today(); selDay=t; viewY=+t.slice(0,4); viewM=+t.slice(5,7)-1; renderCalendar(); });
+  $("#cal").addEventListener("click", e=>{ const b=e.target.closest("[data-day]"); if(!b) return; selDay=b.dataset.day;
+    const y=+selDay.slice(0,4), m=+selDay.slice(5,7)-1; if (y!==viewY||m!==viewM){viewY=y;viewM=m;} renderCalendar(); });
+  // Roll over to the new day automatically (checked every minute)
+  setInterval(()=>{ const t=today(); if (t!==curToday){ if (selDay===curToday){ selDay=t; viewY=+t.slice(0,4); viewM=+t.slice(5,7)-1; } curToday=t; renderCalendar(); renderActivities(); } }, 60000);
+
+  function renderAll(){ renderInfo(); renderStaff(); renderCalendar(); renderActivities(); renderLinks(); }
+
+  /* ---------- dialog ---------- */
+  const dlg = $("#dlg"); let editing = null;
+  function openForm(col, id, presetDate){
+    const sc = SCHEMAS[col];
+    const cur = col==="info" ? state.info : (id ? state[col].find(x=>x._id===id) : {}) || {};
+    editing = {col, id};
+    $("#dlg-title").textContent = (col==="info"?"Sửa ":(id?"Sửa ":"Thêm "))+sc.label;
+    $("#dlg-err").textContent = "";
+    $("#dlg-fields").innerHTML = sc.fields.map(f=>{
+      const v = cur[f.k] ?? (f.k==="date"&&!id ? (presetDate||today()) : "");
+      const idAttr = `id="f-${col}-${f.k}" name="${f.k}"${f.req?" required":""}`;
+      let input;
+      if (f.type==="textarea") input = `<textarea ${idAttr}>${esc(v)}</textarea>`;
+      else if (f.type==="select") input = `<select ${idAttr}>${f.opts.map(o=>`<option${o===v?" selected":""}>${esc(o)}</option>`).join("")}</select>`;
+      else input = `<input ${idAttr} type="${f.type||"text"}" value="${esc(v)}"${f.type==="url"?' placeholder="https://…"':""}>`;
+      return `<label for="f-${col}-${f.k}">${esc(f.l)}${f.req?" *":""}${input}</label>`;
+    }).join("");
+    dlg.showModal();
+    const first = dlg.querySelector("input,textarea,select"); first && first.focus();
+  }
+  $("#dlg-cancel").addEventListener("click", ()=>dlg.close());
+  $("#dlg-form").addEventListener("submit", async e=>{
+    e.preventDefault(); if (!editing || !db) return;
+    const {col,id} = editing, sc = SCHEMAS[col], data = {};
+    for (const f of sc.fields){
+      let v = dlg.querySelector(`[name="${f.k}"]`).value.trim();
+      if (f.type==="number") v = v==="" ? "" : Number(v);
+      if (f.type==="url" && v && !/^https?:\/\//i.test(v)) v = "https://"+v;
+      if (f.type==="url" && v && !safeUrl(v)){ $("#dlg-err").textContent = `“${f.l}” chưa phải đường link hợp lệ.`; return; }
+      data[f.k] = v;
+    }
+    const btn = $("#dlg-save"); btn.disabled = true; btn.textContent = "Đang lưu…";
+    try{
+      if (col==="info") await db.doc("info/main").set(data);
+      else if (id) await db.collection(col).doc(id).set(data);
+      else await db.collection(col).add(data);
+      dlg.close(); toast("Đã lưu");
+    }catch(err){
+      $("#dlg-err").textContent = err && err.code==="invalid_argument" ? "Bạn không có quyền chỉnh sửa trang này." :
+        err && err.code==="quota_exceeded" ? "Kho dữ liệu đã đầy. Hãy xóa bớt mục cũ rồi thử lại." : "Chưa lưu được. Hãy thử lại sau ít phút.";
+    }finally{ btn.disabled = false; btn.textContent = "Lưu"; }
+  });
+
+  /* ---------- events ---------- */
+  document.addEventListener("click", async e=>{
+    const t = e.target.closest("button"); if (!t) return;
+    if (t.dataset.add) openForm(t.dataset.add);
+    else if (t.dataset.addDay) openForm("activities", null, t.dataset.addDay);
+    else if (t.hasAttribute("data-edit-info")) openForm("info");
+    else if (t.dataset.edit) openForm(t.dataset.edit, t.dataset.id);
+    else if (t.dataset.filter){ actFilter = t.dataset.filter; renderActivities(); }
+    else if (t.dataset.copy){
+      try{ await navigator.clipboard.writeText(t.dataset.copy); toast("Đã sao chép"); }
+      catch{ const r=document.createRange(); r.selectNodeContents(t.parentNode); const s=getSelection(); s.removeAllRanges(); s.addRange(r); }
+    }
+    else if (t.dataset.del){
+      if (!t.classList.contains("armed")){ t.classList.add("armed"); t.textContent="Bấm lần nữa để xóa"; setTimeout(()=>{ if(t.isConnected){t.classList.remove("armed"); t.textContent="Xóa";} },3500); return; }
+      try{ await db.collection(t.dataset.del).doc(t.dataset.id).delete(); toast("Đã xóa"); }catch{ toast("Chưa xóa được, hãy thử lại"); }
+    }
+  });
+  $("#link-q").addEventListener("input", e=>{ linkQ = e.target.value; renderLinks(); });
+
+  /* ---------- boot ---------- */
+  renderAll();
+  function showStatus(msg){ const s=$("#status"); s.textContent=msg; s.hidden=!msg; }
+  showStatus("Đang tải dữ liệu bộ môn…");
+
+  (async ()=>{
+    try{
+      const r = await fetch("data.json", {cache:"no-store"});
+      if (!r.ok) throw 0;
+      const d = await r.json();
+      state.info = d.info || {};
+      for (const col of ["staff","activities","courses","links"])
+        state[col] = (d[col]||[]).map((x,i)=>({...x, _id: x.id || String(i)}));
+      showStatus("");
+    }catch{ showStatus("Không tải được dữ liệu bộ môn. Hãy tải lại trang."); }
+    renderAll();
+  })();
+})();
+</script>
+
+</body></html>

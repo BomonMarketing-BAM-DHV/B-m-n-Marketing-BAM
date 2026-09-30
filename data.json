@@ -1,0 +1,55 @@
+{
+  "info": {
+    "name": "Bộ môn Marketing",
+    "faculty": "Khoa Quản trị Kinh doanh – Marketing",
+    "school": "Trường Đại học Hùng Vương TP. Hồ Chí Minh",
+    "intro": "",
+    "mission": "",
+    "head": "",
+    "office": "",
+    "address": "",
+    "phone": "",
+    "email": ""
+  },
+  "staff": [
+    {
+      "id": "truong-dinh-chien",
+      "title": "PGS.TS.NGND.",
+      "name": "Trương Đình Chiến",
+      "role": "Cố vấn bộ môn",
+      "email": "Chientd@dhv.edu.vn",
+      "expertise": "",
+      "order": 0.5
+    },
+    {
+      "id": "tran-xuan-hoang-hai",
+      "title": "ThS.",
+      "name": "Trần Xuân Hoàng Hải",
+      "role": "Phó trưởng bộ môn",
+      "email": "haitxh@dhv.edu.vn",
+      "expertise": "",
+      "order": 1
+    },
+    {
+      "id": "le-thi-my-linh",
+      "title": "ThS.",
+      "name": "Lê Thị Mỹ Linh",
+      "role": "Giảng viên",
+      "email": "Linhltm@dhv.edu.vn",
+      "expertise": "",
+      "order": 2
+    },
+    {
+      "id": "le-nguyen-trung-kien",
+      "title": "ThS.",
+      "name": "Lê Nguyễn Trung Kiên",
+      "role": "Giảng viên",
+      "email": "Kienlnt@dhv.edu.vn",
+      "expertise": "",
+      "order": 3
+    }
+  ],
+  "activities": [],
+  "courses": [],
+  "links": []
+}
